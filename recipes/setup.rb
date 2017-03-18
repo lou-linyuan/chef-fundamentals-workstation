@@ -12,7 +12,13 @@ end
 package 'ntp'
 
 file '/etc/motd' do
-	content 'This server is the property of Lou Lin-Yuan'
+	content "This server is the property of Lou Lin-Yuan
+
+	HOSTNAME:  #{node['hostname']} 
+	IPADDRESS: #{node['ipaddress']}
+	MEMORY:	   #{node['memory']['total']}
+	CPU:	   #{node['cpu']['0']['mhz']}	
+"	
 	action :create
 	owner 'root'
 	group 'root'
